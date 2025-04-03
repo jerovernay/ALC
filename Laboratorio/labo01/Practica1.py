@@ -37,3 +37,4 @@ f = lambda t : a*t**2 + b * t + c
 plt.plot(xx, yy, '*')
 plt.plot(x, f(x))
 plt.show() 
+
