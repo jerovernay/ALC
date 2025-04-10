@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 def proyectarPts(ptos, T):
-    assert(T.shape == (2,2)) # chequeo de matriz 2x2
+    assert(T.shape == (3,3) or T.shape == (2,2)) # chequeo de matriz  o 3x3
     assert(T.shape[1] == ptos.shape[0]) # multiplicacion matricial valida   
     xy = None
         
