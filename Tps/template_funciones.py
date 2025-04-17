@@ -1,3 +1,13 @@
+# Carga de paquetes necesarios para graficar
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd # Para leer archivos
+import geopandas as gpd # Para hacer cosas geográficas
+import seaborn as sns # Para hacer plots lindos
+import networkx as nx # Construcción de la red en NetworkX
+import scipy
+
+
 def construye_adyacencia(D,m): 
     # Función que construye la matriz de adyacencia del grafo de museos
     # D matriz de distancias, m cantidad de links por nodo
