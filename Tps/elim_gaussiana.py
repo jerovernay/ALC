@@ -1,33 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Eliminacion Gausianna
-"""
 import numpy as np
-
-def elim_gaussiana(A):
-    cant_op = 0
-    m=A.shape[0]
-    n=A.shape[1]
-    P, A_copia = construir_P(A)
-    U = A_copia
-    L = np.identity(n)
-
-    if m!=n:
-        print('Matriz no cuadrada')
-        return
-
-    for j in range(n):
-        for i in range(j+1, n):
-            L[i,j] = U[i,j] / U[j,j]
-            U[i,:] = U[i,:] - L[i,j] * U[j,:]
-
-            
-#    L = np.tril(U,-1) + np.eye(A.shape[0]) 
-#    U = np.triu(U)
-    
-    return L, U, P
-
 
 
 def construir_P(A):
@@ -36,6 +7,7 @@ def construir_P(A):
     A_copia = A.copy()
 
     for k in range(n):
+
         # Buscamos el índice del mayor pivote desde fila k hacia abajo
         p = k
         for i in range(k+1, n):
@@ -47,7 +19,29 @@ def construir_P(A):
             A_copia[[k, p], :] = A_copia[[p, k], :]
             P[[k, p], :] = P[[p, k], :]
 
-    return P,A_copia
+    return P, A_copia
+
+
+def elim_gaussiana(A):
+    #cant_op = 0
+    m=A.shape[0]
+    n=A.shape[1]
+    P, A_copia = construir_P(A)
+    U = A_copia
+    L = np.identity(n)
+
+    if m!=n:
+        print('Estamos trabajando con una matriz no cuadrada')
+        return
+    
+
+    for j in range(n):
+        for i in range(j+1, n):
+            L[i,j] = U[i,j] / U[j,j]
+            U[i,:] = U[i,:] - L[i,j] * U[j,:]
+ 
+    return L, U, P
+
 
 
 
@@ -71,6 +65,14 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+#    L = np.tril(U,-1) + np.eye(A.shape[0]) 
+#    U = np.triu(U)
 
 def hacer_b(n):
 
